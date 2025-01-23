@@ -1,0 +1,28 @@
+{
+  "name": "ecommerce-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js",
+    "build": "npm install --legacy-peer-deps && npm install --legacy-peer-deps --prefix client && npm run build --prefix client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "braintree": "^3.24.0",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.1",
+    "express-formidable": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.4",
+    "slugify": "^1.6.6"
+  }
+}
