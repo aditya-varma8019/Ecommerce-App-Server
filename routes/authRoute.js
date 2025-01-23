@@ -35,4 +35,10 @@ router.get('/all-orders', requireSignin, adminSignIn, getAllOrdersController);
 
 router.put('/order-status/:orderId', requireSignin, adminSignIn, updateOrderStatusController);
 
+router.post('/wishlist/add', requireSignin, addItemsToWishlistController);
+
+router.get('/wishlist', requireSignin, getWishlistController);
+
+router.post('/wishlist/remove', requireSignin, removeItemFromWishlistController);
+
 export default router;
