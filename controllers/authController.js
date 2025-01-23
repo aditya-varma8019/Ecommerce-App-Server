@@ -282,3 +282,66 @@ export const updateOrderStatusController = async (req, res) => {
         })
     }
 }
+
+export const addItemsToWishlistController = async (req, res) => {
+    try {
+        const { productId } = req.body;
+        const user = await userModel.findById(req.user._id);
+
+        if (!user.wishlist.includes(productId)) {
+            user.wishlist.push(productId);
+            await user.save();
+        }
+
+        res.status(200).send({
+            success: true,
+            message: "Product added to wishlist successfully",
+            wishlist: user.wishlist
+        })
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Error while adding product to wishlist",
+            error
+        })
+    }
+}
+
+export const removeItemFromWishlistController = async (req, res) => {
+    try {
+        const { productId } = req.body;
+        const user = await userModel.findById(req.user._id);
+
+        user.wishlist = user.wishlist.filter((item) => item.toString() !== productId);
+        await user.save();
+
+        res.status(200).send({
+            success: true,
+            message: "Product removed from wishlist successfully",
+            wishlist: user.wishlist
+        })
+
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Error while removing product from wishlist",
+            error
+        })
+    }
+}
+
+export const getWishlistController = async (req, res) => {
+    try {
+        const user = await userModel.findById(req.user._id).populate("wishlist");
+        res.status(200).send({
+            success: true,
+            wishlist: user.wishlist
+        })
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Error while getting wishlist",
+            error
+        })
+    }
+}

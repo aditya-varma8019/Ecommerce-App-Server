@@ -31,6 +31,13 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    wishlist: {
+        type: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product',
+        }],
+        default: [], // Initialize as an empty array
+    },
 }, { timestamps: true })
 
 export default mongoose.model('users', userSchema);
