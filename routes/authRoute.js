@@ -1,5 +1,5 @@
 import express from 'express';
-import { forgotPasswordController, getAllOrdersController, getOrdersController, loginController, registerController, testController, updateOrderStatusController, updateProfileController } from '../controllers/authController.js';
+import { addItemsToWishlistController, forgotPasswordController, getAllOrdersController, getOrdersController, getWishlistController, loginController, registerController, removeItemFromWishlistController, testController, updateOrderStatusController, updateProfileController } from '../controllers/authController.js';
 import { adminSignIn, requireSignin } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
